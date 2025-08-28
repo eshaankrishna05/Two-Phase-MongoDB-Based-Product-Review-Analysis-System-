@@ -1,72 +1,72 @@
-Steps required to run the code
+Introduction 
+The goal of this project is to teach the concept of working with data stored in files and NoSQL databases. This is done by building and operating on a document store, using MongoDB. Your job in this project is to write programs that store data in MongoDB and provide basic functions for searches and update.
 
--	Ensure that Python 3.0 or above version and MongoDB is installed in the system.
--	Install pymongo (if not already installed):
 
-    Run the following command in your terminal:
+Task 
+You are given a JSON file, which you will be loading into MongoDB. You should be able to find sample input files attached to this assignment description. The data is obtained from Kaggle and includes a set of Amazon reviews. 
 
- 	  Pip3 install pymongo
 
-- Create the database directory:
+Each review is given in a line and includes: 
 
-    Use the command mkdir to create a directory for MongoDB to store its data:
+The unique ID of the reviewer
 
-    Mkdir db_folder
+The unique ID of the Amazon product  (ASIN: Amazon Standard Identification Number)
 
-- Start the MongoDB server:
+The name of the reviewer
 
-    Run the following command to start the MongoDB server with the specified port and database path: 
+Tuple values with votes of helpfulness. For example, [2,4] represents 2 who found it unhelpful, while 4 found it helpful. 
 
-    Mongod – port 27017 –dbpath db_folder
+The content of their review message
 
-    Leave this terminal tab/window open to keep the server running.
+Overall rating of the product (Max of 5.0) 
 
-- Run your Python script for phase-1 with the input file and port number as input:
+Summary of their review message content 
 
-    Open a new terminal tab/window and run your python script with the port number
+Review time in UNIX and in string value. 
 
-    Python3 load-json.py 10000.json 27017
 
-    Enter the Batch No: <Enter a number>
+Phase 1: Building a document store 
+For this part, you will write a program named load-json with a proper extension (e.g. load-json.py if using Python) which will take in a json file in the current directory and construct a MongoDB collection. Your program will take as input in the command line a json file name and a port number under which the MongoDB server is running, will connect to the server and will create a database named 291db (if it does not exist). Your program will then create a collection named reviews. If the collection exists, your program should drop it and create a new collection. Your program for this phase ends after building the collection.
 
-    Ensure your Python script correctly handles the port number as a command-line argument using sys.srgv.
 
-- Verify the results for phase-1:
+Data should be inserted in small batches (say 1k-10k reviews per batch) using the insertMany command in MongoDB. The input file is expected to be too large to fit in memory. You may also use Mongoimport ( if available on lab machines).
 
-    Output would be: Data loading complete. Total documents inserted: xx
+Phase 2: Operating on the document store
+For Phase 2, you will write a program named phase2_query with a proper extension (i.e. phase2_query.py) that supports the following operations on the MongoDB database created in Phase 1. 
 
-    Observe the output of your script. Perform the required operations and verify that MongoDB is being accessed correctly.
+Your program will take as input a port number under which the MongoDB server is running, and will connect to a database named 291db on the server. 
 
-- Run your Python script for phase-2 with port number as input:
 
-    Python3 phase2_query.py 27017
+Next, users should be able to perform the following tasks: 
 
-    Ensure your Python script correctly handles the port number as a command-line argument using sys.srgv.
 
-- Verify the results for phase-2:
+Return the average ratings of a product using the ASIN
 
-- Output would be the menu:
+The user should be able to provide the ASIN, and the system should retrieve all the reviews that match this ASIN, and return the average overall rating for the product. 
 
-    Connected to the database...
 
-    Menu:
-	
-    Get average rating of a product
+Find the Top N products
 
-    Find top N highest-rated products
+The user should be able to find the top N highest-rated products across the database by providing the number of products desired to be seen (N). The system should output products that are sorted by average rating, with their ASIN and average score. 
 
-    List most active reviewers
-	
-    Reviews over time
 
-    Flag suspicious reviews
+List the most active reviewers
 
-    Exit
+The system should return reviewers sorted by the number of reviews they have written, in descending order. You should limit the output to 10 most active reviewers.
 
-    Enter choice: 1/2/3/4/5/6
 
-    Observe the output of your script. Perform the required operations by traversing the friendly user-friendly menu and verify that MongoDB is being accessed correctly.
+Reviews Over Time 
 
-- Terminate the MongoDB server:
+Show how the number of reviews for a specific product has changed over time. The user should be able to input years of choice (up to 5) for comparison. The system should output a number of reviews per year (e.g. 2013: 13 reviews, 2014: 0 reviews).
 
-    Once you're done, stop the MongoDB server by pressing Ctrl +C in the terminal window where it is running.
+                                                 
+
+Flagging Suspicious Reviews 
+
+Identify reviews that might be spam. A user should be able to access reviews with very low helpfulness (fewer than 10% of voters found the review helpful), but high ratings (ratings >= 4.5). The system should output a list of the top 10 potentially suspicious reviews. 
+
+
+After each action, the user should be able to return to the main menu for further operations. There should also be an option to end the program. Failure to do so will cost you up to 10 marks.
+
+Testing 
+You will test your programs using your own datasets while adhering to the project specification. 
