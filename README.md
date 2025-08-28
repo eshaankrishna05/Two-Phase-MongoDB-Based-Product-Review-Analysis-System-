@@ -70,15 +70,3 @@ Steps required to run the code
 - Terminate the MongoDB server:
 
     Once you're done, stop the MongoDB server by pressing Ctrl +C in the terminal window where it is running.
-
-
-# SOURCES OF INFORMATION:
-This is the place to acknowledge the use of any source of information beside the course textbook and/or class notes
-
-1. Python reference manual was used called geeksforgeeks.org and W3Schools
-
-# AI AGENT USE: 
-If you have utilized any AI tools, such as ChatGPT, Deepseek, Claude, Gemini, or other similar AI platforms, you are required to provide more details in the AI Agent section. This should include the prompts you used and the responses you received from the model.
-If no AI tools were used, please include a statement confirming this.
-
-- No AI tools, such as ChatGPT, Deepseek, Claude, Gemini, or other similar AI platforms were used.
