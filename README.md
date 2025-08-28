@@ -1,15 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/K8rTjKb8)
-# GROUP INFORMATION:
-You must list the names and CCIDs of all group members as well as the names of anyone you have collaborated with (as must as it is allowed within the course policy) or a line saying that you did not collaborate with anyone else.
-
-1. Gurkeerat Singh Kakar - gskakar
-2. Saachi Gupta - saachi
-3. Vikasini SenthilKumar - vikasini
-4. Eshaan Krishna - eshaankr
-
-We did not collaborate with anyone else.
-
-# INSTRUCTIONS:
 Steps required to run the code
 
 -	Ensure that Python 3.0 or above version and MongoDB is installed in the system.
